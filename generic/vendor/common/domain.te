@@ -87,6 +87,7 @@ neverallow { domain
 - hal_contexthub_default
 - hal_sensors_default
 - hal_camera_default
+- platform_app_36
 - hal_audio_default
 userdebug_or_eng(` -vendor_usta_app')
 userdebug_or_eng(` -vendor_ustaservice_app')
@@ -106,13 +107,14 @@ neverallow { domain
 - vendor_cdsprpcd
 - vendor_audioadsprpcd
 - hal_camera_default
+- platform_app_36
 - vendor_qvrd_vndr
 - vendor_thermal-engine
 - vendor_dspservice
 userdebug_or_eng(` -vendor_sysmonapp_app_test')
 } vendor_qdsp_device:chr_file *;
 neverallow { domain -init -vendor_init - ueventd } vendor_qdsp_device:chr_file ~{r_file_perms};
-neverallow { appdomain - shell userdebug_or_eng(`-vendor_sysmonapp_app_test') } vendor_qdsp_device:chr_file ~{ioctl read};
+neverallow { appdomain - shell -platform_app_36 userdebug_or_eng(`-vendor_sysmonapp_app_test') } vendor_qdsp_device:chr_file ~{ioctl read};
 neverallow mediacodec vendor_qdsp_device:chr_file ~{ioctl read};
 neverallow { domain
 - init
@@ -130,6 +132,7 @@ neverallow { domain
 - hal_telephony_server
 - hal_graphics_composer_default
 - hal_camera_default
+- platform_app_36
 - apexd
 - vendor_qti_init_shell
 - wpa_supplicant_macsec
